@@ -17,8 +17,8 @@ public class UserSecService {
     public List<UserSec> UserSecSvc() throws IOException {
 
         userSecList.clear();
-        String fName = "F:\\Schedules\\Overnight\\Security\\ExportusersNgroups\\Groups.csv";
-//        String fName = "C:\\Users\\bestasu\\Desktop\\Groups.csv";
+//        String fName = "F:\\Schedules\\Overnight\\Security\\ExportusersNgroups\\Groups.csv";
+        String fName = "C:\\Users\\bestasu\\Desktop\\Groups.csv";
         BufferedReader br = new BufferedReader(new FileReader(fName));
         String line = "";
         br.readLine();
