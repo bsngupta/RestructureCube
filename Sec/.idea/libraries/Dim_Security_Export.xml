@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Dim_Security_Export">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Dim_Security_Export.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
