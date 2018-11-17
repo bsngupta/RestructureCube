@@ -1,0 +1,21 @@
+
+Usage: epmautomate login USERNAME PASSWORD/PASSWORD_FILE URL IDENTITYDOMAIN ProxyServerUserName=User ProxyServerPassword=password ProxyServerDomain=domain
+
+Parameters:
+ USERNAME		user name of a Service Administrator.
+ PASSWORD		password of the Service Administrator.
+ PASSWORD_FILE		name and location of the file that stores the encrypted
+			password of the Service Administrator and proxy server.
+			Syntax: For Windows c:\dir\pwd.epw
+		        	For Linux /scratch/dir/pwd.epw
+ URL			URL of the service instance to which to connect.
+			Syntax: http[s]://abcd.oracle.com:1234
+ IDENTITYDOMAIN		identity domain of the service instance.
+			Syntax: OxcorpProduction
+ ProxyServerUserName		<optional> username for authenticating against the proxy server.
+			Syntax: ProxyServerUserName=User
+ ProxyServerPassword		<optional> password for authenticating against the proxy server.
+			Syntax: ProxyServerPassword=password
+ ProxyServerDomain		    <optional> domain for authenticating against the proxy server.
+			Syntax: ProxyServerDomain=domain
+EPMAT-7:Invalid parameter: USERNAME
