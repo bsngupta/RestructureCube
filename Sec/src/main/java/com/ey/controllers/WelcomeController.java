@@ -14,10 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,18 +28,35 @@ public class WelcomeController {
     @Autowired
     UserSecService usrservice;
 
+    private  String id;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String dimsecurity(Model model) throws IOException {
         model.addAttribute("message", "EY_PB Application Security");
         System.out.println("entered dimsec");
-        model.addAttribute(service.DimSecSvc());
+        model.addAttribute(service.DimSecSvc("prd"));
+        this.id  = this.id!= null ? this.id : "prd";
+        model.addAttribute("id", "prd");
+        System.out.println(this.id);
+        return "home";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String dimsecurity1(@PathVariable("id") String id, Model model) throws IOException {
+        model.addAttribute("message", "EY_PB Application Security");
+        System.out.println("entered dimsec 1");
+        System.out.println(id);
+        this.id = id;
+        model.addAttribute(service.DimSecSvc(id));
+        model.addAttribute(this.id != null ? this.id : "prd");
         return "home";
     }
 
     @RequestMapping("/usersGroups")
     public String usrsecurity(Model model) throws IOException {
         model.addAttribute("message", "EY_PB Application Security");
-        model.addAttribute(usrservice.UserSecSvc());
+        model.addAttribute(usrservice.UserSecSvc(this.id));
+        model.addAttribute("id", this.id != null ? this.id : "prd");
         System.out.println("entered usersngroups");
         return "users";
     }
@@ -88,10 +102,6 @@ public class WelcomeController {
 
         return "grpconfirm";
     }
-
-
-
-
 
     @RequestMapping(value = "/updateSec", method = RequestMethod.POST)
     public ModelAndView updateSec(HttpServletRequest request, HttpServletResponse response,
@@ -229,6 +239,7 @@ public class WelcomeController {
     public String grpuploadStatus() {
         return "grpuploadStatus";
     }
+
 
 
 }

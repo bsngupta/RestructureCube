@@ -12,7 +12,24 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+
+
         });
+
+        function createDynamicURL()
+        {
+            var URL;
+            var id = "${requestScope.id}";
+
+            URL = "/sec/" + id;
+
+            return URL;
+        }
+
+        function RedirectURL()
+        {
+            window.location = "/sec/" + "${requestScope.id}";
+        }
     </script>
     <TITLE>EY_PB Application Security</TITLE>
     <style>
@@ -106,7 +123,7 @@
     <li class="dropdown">
         <a href="javascript:void(0)" class="dropbtn">Home</a>
         <div class="dropdown-content">
-            <a href="/sec">Dimensions</a>
+            <a href="#" onclick="RedirectURL();return false;" >Dimensions</a>
             <a href="usersGroups">UsersGroups</a>
         </div>
     </li>

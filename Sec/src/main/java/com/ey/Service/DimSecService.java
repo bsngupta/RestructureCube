@@ -15,11 +15,17 @@ public class DimSecService {
 
     private static List<DimSec> dimSecList = new ArrayList<DimSec>();
 
-    public List<DimSec> DimSecSvc() throws IOException {
+    public List<DimSec> DimSecSvc(String id) throws IOException {
 
         dimSecList.clear();
-//        String fName = "f:\\schedules\\overnight\\security\\ExportSecurity\\security.csv";
         String fName = "C:\\security\\ExportSecurity\\security.csv";
+        if(id.equals("prd")) fName = "C:\\security\\ExportSecurity\\security.csv";
+        if(id.equals("stg")) fName = "C:\\security\\ExportSecurity\\security_stg.csv";
+        if(id.equals("fun")) fName = "C:\\security\\ExportSecurity\\security_fun.csv";
+
+        System.out.println( id + " file name" + fName);
+//        String fName = "f:\\schedules\\overnight\\security\\ExportSecurity\\security.csv";
+        //String fName = "C:\\security\\ExportSecurity\\security.csv";
         BufferedReader br = new BufferedReader(new FileReader(fName));
 
         String line = "";

@@ -5,14 +5,7 @@
 <HEAD>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
+
     </script>
     <TITLE>EY_PB Application Security</TITLE>
     <style>
@@ -135,19 +128,39 @@
         </div>
     </li>
     <li class="dropdown" style="float:right;">
-
         <div>
-            <select id="country" name="country">
-                <option value="prd">Production</option>
-                <option value="stg">Staging</option>
-                <option value="fun">Functional</option>
-            </select>
+                <select id="env" class="env">
+                    <option value="prd">Production</option>
+                    <option value="stg">Staging</option>
+                    <option value="fun">Functional</option>
+                </select>
+
         </div>
     </li>
+    <script>
 
+        $(document).ready(function(){
+
+            $("#mainheader").text("EY_PB Application Security (" + $("#env option:selected").text() + ")");
+
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+        $("#env").val("${requestScope.id}");
+
+        $("#env").change(function(){
+            var select = $("#env").val();
+             location.href = '/sec/'+ select;
+        });
+    </script>
 
 </ul>
-<h3>EY_PB Application Security</h3>
+<h3 id="mainheader"> </h3>
 <input id="myInput" type="text" placeholder="Live Search...">
 <br><br>
 <div id="dvData">
