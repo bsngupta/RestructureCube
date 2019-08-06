@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RestructureCube:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RestructureCube_jar</output-path>
+    <root id="archive" name="RestructureCube.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src1/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="RestructureCube" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/json-20180813.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
